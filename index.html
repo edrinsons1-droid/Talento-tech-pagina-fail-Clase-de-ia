@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talento Tech Oriente - Clon Educativo</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- 1. HEADER -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#inicio" class="logo">
+                <i class="fa-solid fa-code"></i> Talento <span>Tech</span>
+            </a>
+
+            <nav class="nav-links">
+                <ul class="menu">
+                    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                    <li><a href="#programas" class="nav-link">Programas</a></li>
+                    <li><a href="#modalidades" class="nav-link">Modalidades</a></li>
+                    <li><a href="#beneficios" class="nav-link">Beneficios</a></li>
+                    <li><a href="#proceso" class="nav-link">Proceso</a></li>
+                    <li><a href="#noticias" class="nav-link">Noticias</a></li>
+                    <li><a href="#contacto" class="nav-link btn-signup">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section id="inicio" class="hero">
+        <div class="container hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="hero-title">Impulsa tu <span class="highlight">futuro digital</span></h1>
+            <p class="hero-subtitle">Descubre programas intensivos diseñados para transformar tu carrera en el mundo de
+                la tecnología. Aprende de los mejores y únete a la revolución digital.</p>
+            <div class="hero-buttons">
+                <a href="#programas" class="btn primary-btn">Inscríbete ahora <i
+                        class="fa-solid fa-arrow-right"></i></a>
+                <a href="#contacto" class="btn secondary-btn">Saber más</a>
+            </div>
+        </div>
+
+        <!-- Animated Background Shapes -->
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </section>
+
+    <!-- 3. SECCIÓN PROGRAMAS -->
+    <section id="programas" class="section bg-light">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Nuestros <span>Programas</span></h2>
+                <div class="divider"></div>
+                <p class="section-desc">Domina las habilidades más demandadas en el mercado tecnológico actual.</p>
+            </div>
+
+            <div class="grid-container">
+                <!-- Program 1 -->
+                <div class="card pg-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3>Programación</h3>
+                    <p>Desarrolla aplicaciones web completas Frontend y Backend utilizando las tecnologías más modernas.
+                    </p>
+                </div>
+                <!-- Program 2 -->
+                <div class="card pg-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3>Inteligencia Artificial</h3>
+                    <p>Aprende a diseñar, entrenar y desplegar modelos de IA enfocados en solucionar problemas reales.
+                    </p>
+                </div>
+                <!-- Program 3 -->
+                <div class="card pg-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3>Análisis de Datos</h3>
+                    <p>Convierte grandes volúmenes de datos en información útil y estratégica para la toma de
+                        decisiones.</p>
+                </div>
+                <!-- Program 4 -->
+                <div class="card pg-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-link"></i>
+                    </div>
+                    <h3>Blockchain</h3>
+                    <p>Adéntrate en el desarrollo de contratos inteligentes y aplicaciones descentralizadas (DApps).</p>
+                </div>
+                <!-- Program 5 -->
+                <div class="card pg-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-cloud"></i>
+                    </div>
+                    <h3>Arquitectura en la Nube</h3>
+                    <p>Diseña soluciones escalables y seguras utilizando los principales proveedores Cloud del mercado.
+                    </p>
+                </div>
+                <!-- Program 6 -->
+                <div class="card pg-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3>Ciberseguridad</h3>
+                    <p>Protege la infraestructura tecnológica de empresas y previene ciberataques de alto nivel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SECCIÓN MODALIDADES -->
+    <section id="modalidades" class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Descubre cómo <span>Aprender</span></h2>
+                <div class="divider"></div>
+                <p class="section-desc">Elige la modalidad que mejor se adapte a tu estilo de vida y disponibilidad.</p>
+            </div>
+
+            <div class="flex-container">
+                <!-- Modalidad 1 -->
+                <div class="mod-card" data-aos="fade-right">
+                    <div class="mod-img">
+                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Virtual Sincrónico">
+                        <div class="mod-badge"><i class="fa-solid fa-video"></i> Online</div>
+                    </div>
+                    <div class="mod-content">
+                        <h3>Virtual Sincrónico</h3>
+                        <p>Clases en vivo a través de plataformas digitales. Interactúa con profesores y compañeros
+                            desde cualquier parte del mundo.</p>
+                    </div>
+                </div>
+                <!-- Modalidad 2 -->
+                <div class="mod-card" data-aos="fade-left">
+                    <div class="mod-img">
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Presencial">
+                        <div class="mod-badge"><i class="fa-solid fa-users"></i> En Vivo</div>
+                    </div>
+                    <div class="mod-content">
+                        <h3>Presencial</h3>
+                        <p>Vive la experiencia completa en nuestros laboratorios tecnológicos. Sumérgete en el
+                            aprendizaje con práctica directa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SECCIÓN BENEFICIOS -->
+    <section id="beneficios" class="section bg-dark text-white banner-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">¿Por qué elegirnos?</h2>
+                <div class="divider divider-light"></div>
+            </div>
+
+            <div class="benefits-grid">
+                <!-- Beneficio 1 -->
+                <div class="benefit-item" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="b-icon"><i class="fa-solid fa-gift"></i></div>
+                    <h4>100% Gratuito</h4>
+                    <p>Becas completas apoyadas por el ministerio para potenciar el talento del país.</p>
+                </div>
+                <!-- Beneficio 2 -->
+                <div class="benefit-item" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="b-icon"><i class="fa-solid fa-certificate"></i></div>
+                    <h4>Certificado</h4>
+                    <p>Obtén un aval oficial al finalizar el bootcamp que potenciará tu hoja de vida.</p>
+                </div>
+                <!-- Beneficio 3 -->
+                <div class="benefit-item" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="b-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <h4>Networking</h4>
+                    <p>Conéctate con empresas aliadas, mentores y futuros colegas del gremio tecnológico.</p>
+                </div>
+                <!-- Beneficio 4 -->
+                <div class="benefit-item" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="b-icon"><i class="fa-solid fa-rocket"></i></div>
+                    <h4>Formación Intensiva</h4>
+                    <p>Metodología Bootcamp acelerada. Aprende en meses lo que antes tomaba años.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SECCIÓN PROCESO -->
+    <section id="proceso" class="section bg-light">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Tu camino de <span>Éxito</span></h2>
+                <div class="divider"></div>
+                <p class="section-desc">Ingresa fácilmente en cuatro sencillos pasos y transforma tu vida.</p>
+            </div>
+
+            <div class="timeline" data-aos="fade-up">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h3>Registro</h3>
+                        <p>Completa el formulario en línea con tus datos básicos para aplicar a la beca.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h3>Prueba Diagnóstica</h3>
+                        <p>Realiza una evaluación sencilla para medir tu nivel de lógica y conocimientos.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h3>Matrícula</h3>
+                        <p>Firma la carta de compromiso y oficializa tu entrada a la formación.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-content">
+                        <h3>Inicio del Bootcamp</h3>
+                        <p>Comienza las clases y prepárate para potenciar tu carrera profesional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. SECCIÓN NOTICIAS -->
+    <section id="noticias" class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Últimas <span>Noticias</span></h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="news-grid">
+                <!-- Noticias 1 -->
+                <div class="news-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="n-img">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                            alt="Lanzamiento">
+                        <div class="n-date">10 Mar 2026</div>
+                    </div>
+                    <div class="n-content">
+                        <h3>Gran Lanzamiento de la Cohorte 5</h3>
+                        <p>Con más de 1000 estudiantes inscritos, daremos inicio al programa más grande de tecnología
+                            del oriente del país.</p>
+                        <a href="#" class="read-more">Leer más <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <!-- Noticias 2 -->
+                <div class="news-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="n-img">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                            alt="Feria Tech">
+                        <div class="n-date">05 Mar 2026</div>
+                    </div>
+                    <div class="n-content">
+                        <h3>Participación en la Feria Tech 2026</h3>
+                        <p>Nuestros estudiantes presentaron sus proyectos de grado frente a las principales empresas
+                            tecnológicas de la región.</p>
+                        <a href="#" class="read-more">Leer más <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <!-- Noticias 3 -->
+                <div class="news-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="n-img">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                            alt="IA">
+                        <div class="n-date">28 Feb 2026</div>
+                    </div>
+                    <div class="n-content">
+                        <h3>Nuevos módulos de IA Generativa</h3>
+                        <p>Actualizamos nuestro pensum para incluir el uso de LLMs y desarrollo de aplicaciones con IA
+                            avanzada.</p>
+                        <a href="#" class="read-more">Leer más <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. SECCIÓN CONTACTO -->
+    <section id="contacto" class="section bg-light">
+        <div class="container">
+            <div class="contact-wrapper glass-container" data-aos="zoom-in">
+
+                <div class="contact-info">
+                    <h2>Contáctanos</h2>
+                    <p>¿Tienes dudas sobre los programas o la inscripción? Escríbenos y nuestro equipo te responderá lo
+                        más pronto posible.</p>
+
+                    <ul class="info-list">
+                        <li><i class="fa-solid fa-location-dot"></i> Edificio Tecnológico, Oriente, Colombia</li>
+                        <li><i class="fa-solid fa-phone"></i> +57 (300) 123-4567</li>
+                        <li><i class="fa-solid fa-envelope"></i> info@talentotechoriente.com</li>
+                    </ul>
+
+                    <div class="contact-social">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <form action="https://formspree.io/f/xeerajjj" method="POST" id="contactForm">
+                        <div class="input-group">
+                            <label for="name">Nombre completo</label>
+                            <input type="text" id="name" name="name" required placeholder="Ej: Juan Pérez">
+                        </div>
+                        <div class="input-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" required placeholder="Ej: juan@gmail.com">
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">Teléfono / WhatsApp</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="Ej: 300 000 0000">
+                        </div>
+                        <div class="input-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" rows="4" required
+                                placeholder="Escribe aquí tu duda..."></textarea>
+                        </div>
+                        <button type="submit" class="btn primary-btn btn-submit">Enviar Mensaje <i
+                                class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col about">
+                    <h3><i class="fa-solid fa-code"></i> Talento <span>Tech</span></h3>
+                    <p>Formando la próxima generación de líderes digitales y desarrolladores altamente capacitados para
+                        el mundo moderno.</p>
+                </div>
+                <div class="footer-col links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#programas">Programas</a></li>
+                        <li><a href="#modalidades">Modalidades</a></li>
+                        <li><a href="#beneficios">Beneficios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col support">
+                    <h3>Soporte</h3>
+                    <ul>
+                        <li><a href="#proceso">Proceso de Matrícula</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Talento Tech Oriente. Clon educativo. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+    <!-- JS Libraries -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Chatbase Widget -->
+    <script>
+    (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="z7zp62_EVI7RSnxSus-PG";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    </script>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>
