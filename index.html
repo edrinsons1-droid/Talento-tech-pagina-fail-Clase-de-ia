@@ -307,6 +307,43 @@
         </div>
     </section>
 
+    <!-- 7.5 SECCIÓN COMENTARIOS -->
+    <section id="comentarios" class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Deja tu <span>Comentario</span></h2>
+                <div class="divider"></div>
+                <p class="section-desc">Nos encantaría saber qué piensas. ¡Anímate a escribirnos!</p>
+            </div>
+
+            <div class="comentarios-modulo glass-container" data-aos="fade-up" data-aos-delay="100">
+                <!-- Formulario -->
+                <form id="form-comentario">
+                    <div class="input-group">
+                        <label for="nombre-comentario">Tu Nombre</label>
+                        <input type="text" id="nombre-comentario" required placeholder="Ej: Diana Prince">
+                    </div>
+                    <div class="input-group">
+                        <label for="texto-comentario">Comentario</label>
+                        <textarea id="texto-comentario" rows="3" required placeholder="¿Qué te parece?"></textarea>
+                    </div>
+                    <button type="submit" id="btn-comentar" class="btn primary-btn btn-submit">
+                        Enviar Comentario <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    <div id="mensaje-estado" class="mensaje-estado"></div>
+                </form>
+
+                <!-- Lista de Comentarios -->
+                <div class="comentarios-lista">
+                    <h3>Comentarios Recientes (<span id="contador-comentarios">0</span>)</h3>
+                    <div id="contenedor-comentarios">
+                        <div class="cargando">Cargando comentarios...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 8. SECCIÓN CONTACTO -->
     <section id="contacto" class="section bg-light">
         <div class="container">
@@ -401,6 +438,9 @@
     <script>
     (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="z7zp62_EVI7RSnxSus-PG";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
     </script>
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <!-- Custom JS -->
     <script src="script.js"></script>
