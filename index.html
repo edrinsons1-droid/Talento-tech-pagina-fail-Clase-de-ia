@@ -39,7 +39,16 @@
                     <li><a href="#beneficios" class="nav-link">Beneficios</a></li>
                     <li><a href="#proceso" class="nav-link">Proceso</a></li>
                     <li><a href="#noticias" class="nav-link">Noticias</a></li>
-                    <li><a href="#contacto" class="nav-link btn-signup">Contacto</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                    <!-- Auth Buttons -->
+                    <li id="nav-auth-buttons" style="display: flex; gap: 10px; margin-left: 10px;">
+                        <button class="btn secondary-btn" style="padding: 8px 15px; font-size: 0.9rem;" onclick="abrirModal('modal-login')">Ingresar</button>
+                        <button class="btn primary-btn" style="padding: 8px 15px; font-size: 0.9rem;" onclick="abrirModal('modal-registro')">Registro</button>
+                    </li>
+                    <li id="nav-user-info" style="display: none; align-items: center; gap: 10px; margin-left: 10px;">
+                        <span id="user-email-display" style="font-size: 0.9rem; font-weight: 500;"></span>
+                        <button class="btn secondary-btn" style="padding: 8px 15px; font-size: 0.9rem;" onclick="cerrarSesion()"><i class="fa-solid fa-right-from-bracket"></i></button>
+                    </li>
                 </ul>
             </nav>
 
@@ -317,11 +326,20 @@
             </div>
 
             <div class="comentarios-modulo glass-container" data-aos="fade-up" data-aos-delay="100">
-                <!-- Formulario -->
-                <form id="form-comentario">
-                    <div class="input-group">
-                        <label for="nombre-comentario">Tu Nombre</label>
-                        <input type="text" id="nombre-comentario" required placeholder="Ej: Diana Prince">
+                <!-- Mensaje No Autenticado -->
+                <div id="mensaje-no-auth" style="text-align: center; padding: 30px; border-bottom: 1px solid rgba(0,0,0,0.1);">
+                    <i class="fa-solid fa-lock" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
+                    <p style="margin-bottom: 20px; font-size: 1.1rem;"><strong>Debes iniciar sesión o registrarte para comentar</strong></p>
+                    <div style="display: flex; gap: 10px; justify-content: center;">
+                        <button class="btn secondary-btn" onclick="abrirModal('modal-login')">Iniciar sesión</button>
+                        <button class="btn primary-btn" onclick="abrirModal('modal-registro')">Registrarse</button>
+                    </div>
+                </div>
+
+                <!-- Formulario (Oculto si no está logueado) -->
+                <form id="form-comentario" style="display: none;">
+                    <div class="input-group" style="margin-bottom: 10px;">
+                        <span id="comentario-autor-nombre" style="font-weight: bold; color: var(--primary);"></span>
                     </div>
                     <div class="input-group">
                         <label for="texto-comentario">Comentario</label>
@@ -429,6 +447,53 @@
             <p>&copy; 2026 Talento Tech Oriente. Clon educativo. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!-- MODAL LOGIN -->
+    <div id="modal-login" class="modal-auth">
+        <div class="modal-auth-content glass-container">
+            <span class="close-modal" onclick="cerrarModal('modal-login')">&times;</span>
+            <h2 style="margin-bottom: 20px;">Iniciar Sesión</h2>
+            <form id="form-login">
+                <div class="input-group">
+                    <label for="login-email">Correo Electrónico</label>
+                    <input type="email" id="login-email" required placeholder="tu@correo.com">
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Contraseña</label>
+                    <input type="password" id="login-password" required placeholder="******">
+                </div>
+                <button type="submit" id="btn-login" class="btn primary-btn btn-submit" style="width: 100%;">Ingresar</button>
+                <div id="login-error" class="mensaje-estado error" style="margin-top: 10px;"></div>
+            </form>
+            <p style="text-align: center; margin-top: 20px; font-size: 0.9rem;">
+                ¿No tienes cuenta? <a href="#" style="color: var(--primary); font-weight: bold;" onclick="cerrarModal('modal-login'); abrirModal('modal-registro');">Regístrate</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- MODAL REGISTRO -->
+    <div id="modal-registro" class="modal-auth">
+        <div class="modal-auth-content glass-container">
+            <span class="close-modal" onclick="cerrarModal('modal-registro')">&times;</span>
+            <h2 style="margin-bottom: 20px;">Crear Cuenta</h2>
+            <form id="form-registro">
+                <div class="input-group">
+                    <label for="registro-email">Correo Electrónico</label>
+                    <input type="email" id="registro-email" required placeholder="tu@correo.com">
+                </div>
+                <div class="input-group">
+                    <label for="registro-password">Contraseña</label>
+                    <input type="password" id="registro-password" required placeholder="Min 6 caracteres">
+                </div>
+                <button type="submit" id="btn-registro" class="btn primary-btn btn-submit" style="width: 100%;">Registrarse</button>
+                <div id="registro-error" class="mensaje-estado error" style="margin-top: 10px;"></div>
+                <div id="registro-exito" class="mensaje-estado exito" style="margin-top: 10px;"></div>
+            </form>
+            <p style="text-align: center; margin-top: 20px; font-size: 0.9rem;">
+                ¿Ya tienes cuenta? <a href="#" style="color: var(--primary); font-weight: bold;" onclick="cerrarModal('modal-registro'); abrirModal('modal-login');">Inicia Sesión</a>
+            </p>
+        </div>
+    </div>
 
 
     <!-- JS Libraries -->

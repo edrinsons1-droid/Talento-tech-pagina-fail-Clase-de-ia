@@ -128,12 +128,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     /* ==========================================================
-       6. CHATBASE INTEGRATION (Client Code)
+       6. MODALS GLOBALS
        ========================================================== */
+    window.abrirModal = function(id) {
+        document.getElementById(id).style.display = 'flex';
+    };
 
-    // --- CLIENT CODE ---
-    // const token = await getUserToken(); // Get the token from your server
-    // window.chatbase('identify', { token }); // identify the user with Chatbase
+    window.cerrarModal = function(id) {
+        document.getElementById(id).style.display = 'none';
+    };
+
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal-auth')) {
+            event.target.style.display = "none";
+        }
+    };
 
     /* ==========================================================
        7. SUPABASE COMENTARIOS INTEGRATION
@@ -150,7 +159,111 @@ document.addEventListener('DOMContentLoaded', async () => {
         const contenedorComentarios = document.getElementById('contenedor-comentarios');
         const contadorComentarios = document.getElementById('contador-comentarios');
         const mensajeEstado = document.getElementById('mensaje-estado');
+        
+        // Elementos UI Autenticación
+        const navAuthButtons = document.getElementById('nav-auth-buttons');
+        const navUserInfo = document.getElementById('nav-user-info');
+        const userEmailDisplay = document.getElementById('user-email-display');
+        const mensajeNoAuth = document.getElementById('mensaje-no-auth');
+        const comentarioAutorNombre = document.getElementById('comentario-autor-nombre');
+        
+        const formLogin = document.getElementById('form-login');
+        const formRegistro = document.getElementById('form-registro');
+        const btnLogin = document.getElementById('btn-login');
+        const btnRegistro = document.getElementById('btn-registro');
 
+        let currentUser = null;
+
+        // --- 7.1 AUTENTICACIÓN ---
+        supabase.auth.onAuthStateChange((event, session) => {
+            currentUser = session?.user || null;
+            
+            if (currentUser) {
+                // Estado Logueado
+                navAuthButtons.style.display = 'none';
+                navUserInfo.style.display = 'flex';
+                userEmailDisplay.textContent = currentUser.email;
+                
+                formComentario.style.display = 'block';
+                mensajeNoAuth.style.display = 'none';
+                comentarioAutorNombre.textContent = currentUser.email;
+                
+                cerrarModal('modal-login');
+                cerrarModal('modal-registro');
+                
+                if(formLogin) formLogin.reset();
+                if(formRegistro) formRegistro.reset();
+            } else {
+                // Estado No Logueado
+                navAuthButtons.style.display = 'flex';
+                navUserInfo.style.display = 'none';
+                userEmailDisplay.textContent = '';
+                
+                formComentario.style.display = 'none';
+                mensajeNoAuth.style.display = 'block';
+                comentarioAutorNombre.textContent = '';
+            }
+        });
+
+        window.cerrarSesion = async () => {
+            await supabase.auth.signOut();
+        };
+
+        if(formRegistro) {
+            formRegistro.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('registro-email').value;
+                const password = document.getElementById('registro-password').value;
+                const errorDiv = document.getElementById('registro-error');
+                const exitoDiv = document.getElementById('registro-exito');
+                
+                btnRegistro.disabled = true;
+                btnRegistro.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Registrando...';
+                errorDiv.textContent = '';
+                exitoDiv.textContent = '';
+                
+                try {
+                    const { data, error } = await supabase.auth.signUp({ email, password });
+                    if (error) throw error;
+                    
+                    if (data?.user?.identities?.length === 0) {
+                        errorDiv.textContent = 'Este usuario ya está registrado.';
+                    } else {
+                        exitoDiv.textContent = '¡Registro exitoso! Iniciando sesión...';
+                    }
+                } catch (error) {
+                    errorDiv.textContent = error.message;
+                } finally {
+                    btnRegistro.disabled = false;
+                    btnRegistro.innerHTML = 'Registrarse';
+                }
+            });
+        }
+
+        if(formLogin) {
+            formLogin.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                const errorDiv = document.getElementById('login-error');
+                
+                btnLogin.disabled = true;
+                btnLogin.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Ingresando...';
+                errorDiv.textContent = '';
+                
+                try {
+                    const { error } = await supabase.auth.signInWithPassword({ email, password });
+                    if (error) throw error;
+                } catch (error) {
+                    errorDiv.textContent = 'Credenciales inválidas.';
+                } finally {
+                    btnLogin.disabled = false;
+                    btnLogin.innerHTML = 'Ingresar';
+                }
+            });
+        }
+
+        // --- 7.2 COMENTARIOS ---
         // Formateador de fechas
         const formatearFecha = (fechaStr) => {
             const opciones = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
@@ -186,7 +299,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 contenedorComentarios.innerHTML = comentarios.map(c => `
                     <div class="comentario-item">
                         <div class="comentario-header">
-                            <span class="comentario-autor"><i class="fa-solid fa-user-circle"></i> ${escaparHTML(c.nombre)}</span>
+                            <span class="comentario-autor"><i class="fa-solid fa-user-circle"></i> ${escaparHTML(c.correo_usuario || 'Usuario')}</span>
                             <span class="comentario-fecha">${formatearFecha(c.fecha)}</span>
                         </div>
                         <p class="comentario-texto">${escaparHTML(c.comentario)}</p>
@@ -204,10 +317,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             formComentario.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
-                const nombre = document.getElementById('nombre-comentario').value.trim();
                 const comentarioTexto = document.getElementById('texto-comentario').value.trim();
                 
-                if (!nombre || !comentarioTexto) return;
+                if (!comentarioTexto || !currentUser) return;
 
                 // Estado de carga UI
                 const originalBtnContent = btnComentar.innerHTML;
@@ -217,10 +329,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 mensajeEstado.className = 'mensaje-estado';
 
                 try {
-                    // Inserción en Supabase (la fecha y UUID se generan solos en DB)
                     const { error } = await supabase
                         .from('comentarios')
-                        .insert([{ nombre: nombre, comentario: comentarioTexto }]);
+                        .insert([{ comentario: comentarioTexto, usuario_id: currentUser.id }]);
 
                     if (error) throw error;
 
